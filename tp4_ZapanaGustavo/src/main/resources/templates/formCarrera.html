@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario carrera</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">            
+</head>
+<body>  
+    <div class="container">
+        <h1>FORMULARIO CARRERA</h1>         
+        <form data-th-object="${nuevaCarrera}" data-th-action="${flag}?@{/modificarCarrera}:@{/guardarCarrera}" 
+         method="post">
+             <div class="col-md-4">
+				<label for="codigo" class="form-label">Código Carrera</label> 
+				<input id="codigo" name="codigo" type="text" class="form-control" placeholder="Ingrese codigo" required data-th-field="*{codigo}" data-th-readonly=${flag}>				
+			 </div>                    
+             <input id="estado" name="estado" type="hidden" class="form-control" data-th-field="*{estado}">                       
+             <div class="col-md-4">
+                 <label for="nombre" class="form-label">Nombre Carrera</label>
+                 <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Ingrese nombre" required data-th-field="*{nombre}">
+             </div>
+             <div class="col-md-4">
+                 <label for="duracion" class="form-label">Años de Carrera</label>
+                 <input id="duracion" name="duracion" type="number" class="form-control" required data-th-field="*{duracion}">
+             </div>                      
+             <button type="submit" class="btn btn-primary">Guardar carrera</button>                 
+         </form>    
+    </div>   
+    <script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>    
+</body>
+</html>

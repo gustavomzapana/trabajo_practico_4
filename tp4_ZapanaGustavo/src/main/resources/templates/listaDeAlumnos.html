@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado alumnos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">            
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">ALUMNOS</h1>
+        <div class="card" data-th-each="a : ${listadoAlumnos}">
+            <div class="card-header">
+                <h3 class="card-title"><span data-th-text="AL+${a.lu+' '+a.apellido+' '+a.nombre}"></span></h3>
+            </div>
+            <div class="card-body">                            
+                <ul>
+                    <li>
+                        <strong>Apellido:</strong> <span data-th-text="${a.apellido}"></span>
+                    </li>
+                    <li>
+                        <strong>Nombre:</strong> <span data-th-text="${a.nombre}"></span>
+                    </li>
+                    <li>
+                        <strong>LU:</strong> <span data-th-text="${a.lu}"></span>
+                    </li>                    
+                    <li>
+                        <strong>DNI:</strong> <span data-th-text="${a.dni}"></span>
+                    </li>
+                    <li>
+                        <strong>Correo:</strong> <span data-th-text="${a.email}"></span>
+                    </li>                    
+                    <li>
+                        <strong>Teléfono:</strong> <span data-th-text="${a.telefono}"></span>
+                    </li>
+                    <li>
+                        <strong>Fecha de nacimiento:</strong> <span data-th-text="${a.fechaNacimiento}"></span>
+                    </li>
+                    <li>
+                        <strong>Domiclio:</strong> <span data-th-text="${a.domicilio}"></span>
+                    </li>
+                    
+                </ul>
+                <a data-th-href="@{'/eliminarAlumno/'+${a.lu}}" class="btn btn-danger">Borrar</a>
+                <a data-th-href="@{'/modificarAlumno/'+${a.lu}}" class="btn btn-danger">Modificar</a>            
+            </div>
+        </div>
+    </div>
+    
+    <script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>    
+</body>
+</html>

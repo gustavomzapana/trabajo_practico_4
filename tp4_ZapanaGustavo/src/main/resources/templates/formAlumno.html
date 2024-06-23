@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario alumno</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">            
+</head>
+<body>
+    <div class="container">
+        <h1>FORMULARIO ALUMNO</h1>         
+        <form data-th-object="${nuevoAlumno}" data-th-action="${flag}?@{/modificarAlumno}:@{/guardarAlumno}" method="post">
+             <input id="estado" name="estado" type="hidden" class="form-control" data-th-field="*{estado}">
+             <div class="col-md-4">
+				<label for="lu" class="form-label">LU del alumno</label> 
+				<input id="lu" name="lu" type="text" class="form-control" placeholder="Ingrese lu" required data-th-field="*{lu}" data-th-readonly=${flag}>				
+			 </div>             
+             <div class="col-md-4">
+                 <label for="dni" class="form-label">DNI del alumno</label>
+                 <input id="dni" name="dni" type="text" class="form-control" placeholder="Ingrese dni" required data-th-field="*{dni}">
+             </div>      
+             <div class="col-md-4">
+                 <label for="nombre" class="form-label">Nombre del alumno</label>
+                 <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Ingrese nombre" required data-th-field="*{nombre}">
+             </div>
+             <div class="col-md-4">
+                 <label for="apellido" class="form-label">Apellido del alumno</label>
+                 <input id="apellido" name="apellido" type="text" class="form-control" placeholder="Ingrese apellido" required data-th-field="*{apellido}">
+             </div>
+             <div class="col-md-4">
+                 <label for="fechaNacimiento" class="form-label">Fecha de nacimiento del alumno</label>
+                 <input id="fechaNacimiento" name="fechaNacimiento" type="date" class="form-control" placeholder="Ingrese fecha de nacimiento" required data-th-field="*{fechaNacimiento}">
+             </div>
+             <div class="col-md-4">
+                 <label for="email" class="form-label">Correo del alumno</label>
+                 <input id="email" name="email" type="text" class="form-control" placeholder="Ingrese correo" required data-th-field="*{email}">
+             </div>         
+             <div class="col-md-4">
+                 <label for="telefono" class="form-label">Teléfono del alumno</label>
+                 <input id="telefono" name="telefono" type="text" class="form-control" placeholder="Ingrese teléfono" data-th-field="*{telefono}">
+             </div>                             
+             <div class="col-md-4">
+                 <label for="domicilio" class="form-label">Domicilio del alumno</label>
+                 <input id="domicilio" name="domiclio" type="text" class="form-control" placeholder="Ingrese domicilio" required data-th-field="*{domicilio}">
+             </div>
+                 <button type="submit" class="btn btn-primary">Guardar alumno</button>
+         </form>    
+    </div>   
+    <script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>    
+</body>
+</html>

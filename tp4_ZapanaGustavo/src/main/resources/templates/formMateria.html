@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario materia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">            
+</head>
+<body>  
+    <div class="container">
+        <h1>FORMULARIO MATERIA</h1>         
+        <form data-th-object="${nuevaMateria}" data-th-action="${flag}?@{/modificarMateria}:@{/guardarMateria}" method="post">            
+              <div class="col-md-4">
+				<label for="codigo_materia" class="form-label">Código Materia</label> 
+				<input id="codigo_materia" name="codigo_materia" type="text" class="form-control" placeholder="Ingrese materia" required data-th-field="*{codigo}" data-th-readonly=${flag}>				
+			 </div>       
+             <input id="estado" name="estado" type="hidden" class="form-control" data-th-field="*{estado}">                       
+             <div class="col-md-4">
+                 <label for="nombre" class="form-label">Nombre Materia</label>
+                 <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Ingrese materia" required data-th-field="*{nombre}">
+             </div>
+             <div class="col-md-4">
+                 <label for="curso" class="form-label">Curso Materia</label>
+                 <input id="curso" name="curso" type="text" class="form-control" placeholder="Ingrese curso" required data-th-field="*{curso}">
+             </div>
+             <div class="col-md-4">
+                 <label for="cantidadHoras" class="form-label">Cantidad de horas</label>
+                 <input id="cantidadHoras" name="cantidadHoras" type="number" class="form-control" required data-th-field="*{duracion}">
+             </div>
+             <div class="col-md-4">
+                    <label for="docente" class="form-label">Docente</label>                                                                                                                                                                      
+                    <select id="docente" data-th-field="*{docente.legajo}" class="form-select" required>
+                        <option value="">Seleccionar docente</option>
+                        <option data-th-each="d : ${listadoDocentes}" data-th-value="${d.legajo}" data-th-text="${d.apellido}"></option>
+                    </select>                                          
+             </div>
+             <div class="col-md-4">
+                    <label for="carrera" class="form-label">Carrera</label>                                                                                                                                                                      
+                    <select id="carrera" data-th-field="*{carrera.codigo}" class="form-select" required>
+                        <option value="">Seleccionar carrera</option>
+                        <option data-th-each="c : ${listadoCarreras}" data-th-value="${c.codigo}" data-th-text="${c.nombre}"></option>
+                    </select>                                          
+             </div>                                     
+             <div class="col-md-4">
+                    <label for="modalidad" class="form-label">Modalidad</label><br>                                                                                                                                                                      
+                    <label for="presencial">presencial</label>
+                    <input type="radio" id="presencial" name="modalidad" value="true" data-th-field="*{modalidad}"></input><br>
+                    <label for="virtual">virtual</label>
+                    <input type="radio" id="virtual" name="modalidad" value="false" data-th-field="*{modalidad}"></input><br>                                          
+             </div>             
+             <button type="submit" class="btn btn-primary">Guardar materia</button>                 
+         </form>    
+    </div>   
+    <script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>    
+</body>
+</html>
